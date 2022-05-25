@@ -9,10 +9,12 @@ const s3 = new S3(); // initialize the construcotr
 module.exports = {
   signup,
   login,
+  profile
 };
 
 function signup(req, res) {
   console.log(req.body, req.file);
+  
 
   //////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////
@@ -58,6 +60,23 @@ async function login(req, res) {
     });
   } catch (err) {
     return res.status(401).json(err);
+  }
+}
+
+async function profile(req, res){
+  try {
+    // First find the user using the params from the request
+    // findOne finds first match, its useful to have unique usernames!
+    const user = await User.findOne({username: req.params.username})
+    // Then find all the cities that belong to that user
+    if(!user) return res.status(404).json({err: 'User not found'})
+
+    const cities = await City.find({user: user._id}).populate("user").exec();
+    console.log(cities, ' this cities')
+    res.status(200).json({cities: cities, user: user})
+  } catch(err){
+    console.log(err)
+    res.status(400).json({err})
   }
 }
 
