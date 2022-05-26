@@ -44,7 +44,7 @@ export default function AddWeatherUpdateForm(props){
                   className="form-control"
                   name="detail"
                   value={state.detail}
-                  placeholder="What's on your pups mind?"
+                  placeholder="Weather Details"
                   onChange={handleChange}
                   required
               />   
@@ -59,7 +59,7 @@ export default function AddWeatherUpdateForm(props){
                 type="submit"
                 className="btn"
               >
-                ADD PUPPY
+                Post Weather Update
               </Button>
             </Form>
           </Segment>

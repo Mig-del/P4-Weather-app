@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Post = require('../models/post')
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require("uuid");
@@ -12,22 +13,19 @@ module.exports = {
   profile
 };
 
-function signup(req, res) {
+async function signup(req, res) {
   console.log(req.body, req.file);
   
 
-  //////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////
 
   // FilePath unique name to be saved to our butckt
   const filePath = `${uuidv4()}/${req.file.originalname}`;
   const params = {
     Bucket: process.env.BUCKET_NAME,
     Key: filePath,
-    Body: req.file.buffer,
+    Body: req.file.buffer
   };
-  //your bucket name goes where collectorcat is
+  
   //////////////////////////////////////////////////////////////////////////////////
   s3.upload(params, async function (err, data) {
     console.log(data, "from aws"); // data.Location is our photoUrl that exists on aws
@@ -71,9 +69,9 @@ async function profile(req, res){
     // Then find all the cities that belong to that user
     if(!user) return res.status(404).json({err: 'User not found'})
 
-    const cities = await City.find({user: user._id}).populate("user").exec();
-    console.log(cities, ' this cities')
-    res.status(200).json({cities: cities, user: user})
+    const posts = await Post.find({user: user._id}).populate("user").exec();
+    console.log(posts, ' this posts')
+    res.status(200).json({posts: posts, user: user})
   } catch(err){
     console.log(err)
     res.status(400).json({err})
