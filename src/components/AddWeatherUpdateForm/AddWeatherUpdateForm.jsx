@@ -49,6 +49,16 @@ export default function AddWeatherUpdateForm(props){
                   required
               />   
               <Form.Input
+                color='red'
+                className='form-control'
+                type='checkbox'
+                name='alert'
+                value={state.alert}
+                onChange={handleChange}
+                
+                />
+                <p>Dangerous</p>
+              <Form.Input
                 className="form-control"
                 type="file"
                 name="photo"
