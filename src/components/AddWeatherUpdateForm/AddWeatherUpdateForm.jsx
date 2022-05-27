@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Form, Grid, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Segment, Checkbox } from 'semantic-ui-react'
 
 export default function AddWeatherUpdateForm(props){
   const [selectedFile, setSelectedFile] = useState('')
@@ -26,6 +26,7 @@ export default function AddWeatherUpdateForm(props){
     const formData = new FormData()
     formData.append('photo', selectedFile)
     formData.append('detail', state.detail)
+    formData.append('location', state.location)
     props.handleAddPost(formData); 
     
     // Have to submit the form now! We need a function!
@@ -34,12 +35,20 @@ export default function AddWeatherUpdateForm(props){
 
   return (
     
-    <Grid textAlign='center' style={{ height: '25vh' }} verticalAlign='middle'>
+    <Grid textAlign='center'  style={{ height: '25vh', marginBottom: '4em' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Segment>
         
             <Form  autoComplete="off" onSubmit={handleSubmit}>
-            
+
+              <Form.Input
+                className="form-control"
+                type="text"
+                name="location"
+                value={state.location}
+                placeholder="Location"
+                onChange={handleChange}
+              />
               <Form.Input
                   className="form-control"
                   name="detail"
@@ -48,16 +57,13 @@ export default function AddWeatherUpdateForm(props){
                   onChange={handleChange}
                   required
               />   
-              <Form.Input
-                color='red'
-                className='form-control'
-                type='checkbox'
-                name='alert'
-                value={state.alert}
-                onChange={handleChange}
-                
-                />
-                <p>Dangerous</p>
+            
+            <Form.Field>
+              <Checkbox label='Alert'/>
+              
+              <Checkbox label='Beautiful Day' />
+            </Form.Field>
+
               <Form.Input
                 className="form-control"
                 type="file"
@@ -66,6 +72,7 @@ export default function AddWeatherUpdateForm(props){
                 onChange={handleFileInput}
               />   
               <Button
+              
                 type="submit"
                 className="btn"
               >

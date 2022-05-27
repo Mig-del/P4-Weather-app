@@ -60,10 +60,7 @@ export default function ProfilePage(props) {
       setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
     }
   }
-
-
-  // then when the component loads we can use that username to fetch all the users data
-  // then we can store that in state
+  
   useEffect(() => {
     getProfile();
   }, []);

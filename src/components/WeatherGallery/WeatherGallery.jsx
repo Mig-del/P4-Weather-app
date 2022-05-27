@@ -6,7 +6,7 @@ import Loader from '../Loader/Loader';
 export default function PostFeed({posts, numPhotosCol, isProfile, loading, addLike, removeLike, user }){
 
     return (
-        <Card.Group itemsPerRow={numPhotosCol} stackable>
+        <Card.Group  itemsPerRow={numPhotosCol} stackable>
         {loading ? (
           <Segment>
             <Dimmer active inverted>
@@ -17,7 +17,9 @@ export default function PostFeed({posts, numPhotosCol, isProfile, loading, addLi
         ) : null}
         {posts.map((post) => {
           return (
+            
             <CityCard
+              className='card'
               post={post}
               key={post._id}
               isProfile={isProfile}

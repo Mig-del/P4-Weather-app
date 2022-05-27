@@ -9,6 +9,7 @@ const likesSchema = mongoose.Schema({
 const postSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, // referencing a model
     photoUrl: String,
+    location: String,
     detail: String,
     likes: [likesSchema] // embedded schema
   })

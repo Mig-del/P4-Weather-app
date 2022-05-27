@@ -16,13 +16,14 @@ function ProfileBio({ user }) {
             size="small"
           />
         </Grid.Column>
-        <Grid.Column textAlign="left" style={{ maxWidth: 450 }}>
+      </Grid.Row>
+        <Grid.Column textAlign="center" style={{ maxWidth: 450 }}>
           <Segment vertical>
             <h3>{user.username}</h3>
           </Segment>
          
         </Grid.Column>
-      </Grid.Row>
+      
     </Grid>
   );
 }
