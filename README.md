@@ -1,37 +1,40 @@
-## Setup 
+## README
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+# Post Weather
 
 
-#### Setup your git repo
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2. Then you can run the following commands in the root of your project 
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be, look at the address in the code github gives you!
-git push -u origin main
-```
+We all use the weather to start small talk with people you want to engage with or just pass time. With so many of us working from home it can be difficult to make friends or just talk to new people. 
+With Post Weather you can post your current weather and start a conversation.
 
-#### Setup the App
+<a href="https://postweather.herokuapp.com">Heroku</a>
 
-```npm install```
+<a href="https://trello.com/b/VjRW7Grx/weather-app">Trello</a>
 
-*DOTENV*
+## Getting Started
 
-`touch .env`
+#### I imaged my weather app to display current weather, adding your favorite cites to your profile to monitor or share. A signup/login to access your profile. And see a 3 day forecast of each city selected.
+![Screen Shot 2022-05-20 at 4 03 36 PM](https://user-images.githubusercontent.com/93844738/170642397-f7f230d0-1c5b-4282-addb-357a4bf44849.png)
 
-add your variables
+#### Adding a basic form to post current weather in your exact location. In the form you can upload an image, add city name, decription, and a checkbox of a beautiful day or if you should be alarmed.
+![Screen Shot 2022-05-26 at 9 57 28 PM](https://user-images.githubusercontent.com/93844738/170643206-121d96f2-bc9f-4e50-8aac-37ec2120c5b0.png)
 
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
+#### The weather card shows the image you uploaded and a comment post.
+![Screen Shot 2022-05-26 at 9 56 00 PM](https://user-images.githubusercontent.com/93844738/170643703-42880559-8deb-40fb-984f-6da2b42a4b44.png)
 
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+
+## Technologies Used
+- React
+- Express
+- Semantic UI
+- MongoDB
+- AWS
+- Heroku
+- Google
+
+## Next Step
+- I would really like to impliment a 3rd party API for current weather
+- Share post or weather to friends
+- Google Map
+- Weather alerts
